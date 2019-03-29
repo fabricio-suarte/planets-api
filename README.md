@@ -33,7 +33,7 @@ Response: 409 - conflict
 
 ### Technology Stack
 
-This project was built using Intellij IDEA Communit Edition, Gradle 5.2 and Groovy, Java 1.8 (OpenSDK) and Mongo DB 4.1 (docker container).
+This project was built using Intellij IDEA Communit Edition 2018.3, Gradle 5.2 and Groovy, Java 1.8 (OpenSDK) and Mongo DB 4.1 (docker container).
 If you intend to run the Integration Tests you should have docker installed. Take a look bellow in the "Testing" section.
 
 ### Application desing
@@ -42,16 +42,16 @@ The application was thought using concepts from DDD(Domain Driven Design), Clean
 
 * domain: business logic
 * application: business trasactions logic, domain coordenation. Anti-corruption layer (does not expose the domain)
-* data mappers: abstraction to the persisence layer, persistence services
+* data mappers: abstraction to the persistence layer, persistence services
 * controllers: http request handlers. Consumes the application services
 
 ### Testing
 
-There are two test modules: "test", for "unit tests" and "testIntegration" for integration tests. The application provides, in a very simple but effective way, a nice level of abstraction and low couppling between layers. Unit tests are totally mocked, there is no intrastructure dependency. 
+There are two test modules: "test", for "unit tests" and "testIntegration" for integration tests. The application design provides, in a very simple but effective way, a nice level of abstraction and low coupling between layers. Infrastructure dependencies like database access and external remote service calls are totally mock, so **Unit tests** can run fast, smoothly and concentrate on its main purpose: to test domain and application business logic. 
 
-Integration tests are not automated so if you whant to run it successfully, pay attention to the following steps:
+**Integration tests** are not totally automated so if you want to run it successfully, pay attention to the following steps:
 
-1) Start the MongoDB docker container like this:
+1) Start the MongoDB docker container using the above command (perhaps you have to execut it as 'sudo' on Linux')
 
 docker run --rm --name mongo-planets-api -p 27017:27017 -d mongo:4.1
 
@@ -59,7 +59,7 @@ docker run --rm --name mongo-planets-api -p 27017:27017 -d mongo:4.1
 
 /.../planets-api/source$ ./gradlew run
 
-You should se something like this:
+You should see something like this:
 ```
 > Task :run
 [main] INFO org.eclipse.jetty.util.log - Logging initialized @422ms to org.eclipse.jetty.util.log.Slf4jLog
