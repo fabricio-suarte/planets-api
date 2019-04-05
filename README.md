@@ -92,4 +92,4 @@ You should see something like this:
 
 The container is automatically removed after stoping.
 
-Comments, bugs reports, suggestions, etc. are wellcome.
+Comments, bugs reports, suggestions, etc. are welcome.
